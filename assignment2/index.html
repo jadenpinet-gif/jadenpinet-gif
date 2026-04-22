@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 2 | Math Explorer</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+</head>
+<body style="margin:0">
+  <script>
+// Jaden Pinet
+// Assignment [2] Math Explorer
+// 2262 | Prototyping With Code
+
+function setup() {
+  createCanvas(400, 400);
+
+  //STEP ONE
+  let name = prompt("Hello, what is your name?");
+  alert("Welcome " + name + " , it's a pleasure to greet you!");
+
+  //STEP TWO
+  let firstInput = prompt("Please enter an integer value:");
+  let firstNumber = Number(firstInput);
+
+  //STEP THREE
+  let secondInput = prompt("Please enter a second integer value:");
+  let secondNumber = Number(secondInput);
+
+  //STEP FOUR
+  alert("Let me show you what I can do with the numbers " + firstNumber + " and " + secondNumber + " :")
+
+  //STEP FIVE
+  let sum = firstNumber + secondNumber;
+  alert(firstNumber + " + " + secondNumber + " = " + sum)
+
+  let difference = firstNumber - secondNumber;
+  alert(firstNumber + " - " + secondNumber + " = " + difference);
+
+  let product = firstNumber * secondNumber;
+  alert(firstNumber + " * " + secondNumber + " = " + product);
+
+  let quotient = firstNumber / secondNumber;
+  alert(firstNumber + " / " + secondNumber + " = " + quotient);
+
+  let remainder = firstNumber % secondNumber;
+  alert(firstNumber + " % " + secondNumber + " = " + remainder);
+
+  let maximum = Math.max(firstNumber, secondNumber);
+  alert("The max of " + firstNumber + " and " + secondNumber + " is " + maximum);
+
+  let minimum = Math.min(firstNumber, secondNumber);
+  alert("The min of " + firstNumber + " and " + secondNumber + " is " + minimum);
+
+  //STEP SIX - Decimal numbers
+  let decimalInput = prompt("Please enter a value with a decimal part:");
+  let decimalNumber = Number(decimalInput)
+
+  alert("Let me show you what I can do with this number " + decimalNumber + " : ");
+
+  let negative = -decimalNumber;
+  alert("The negative of " + decimalNumber + " is " + negative);
+
+  let sineValue = Math.sin(decimalNumber);
+  alert("The sine of " + decimalNumber + " radians is " + sineValue);
+
+  let cosineValue = Math.cos(decimalNumber);
+  alert("The cosine of " + decimalNumber + " radians is " + cosineValue);
+
+  let powerValue = Math.pow(decimalNumber, 10);
+  alert(decimalNumber + "^10 = " + powerValue);
+
+  let sqrtValue = Math.sqrt(decimalNumber);
+  alert("Square root of " + decimalNumber + " = " + sqrtValue);
+
+  let roundedValue = Math.round(decimalNumber);
+  alert("Rounded " + decimalNumber + " = " + roundedValue);
+
+  let floorValue = Math.floor(decimalNumber);
+  alert("Floor of " + decimalNumber + " = " + floorValue);
+
+  let ceilingValue = Math.ceil(decimalNumber);
+  alert("Ceiling of" + decimalNumber + " = " + ceilingValue);
+
+  let absValue = Math.abs(decimalNumber);
+  alert("Absolute value of" + decimalNumber + " = " + absValue);
+
+  let ageInput = prompt("How old are you?");
+  let age = Number(ageInput);
+
+  let ageInMonths = age * 12;
+  let ageInDays = age * 365;
+  let ageInHours = ageInDays * 24;
+  let ageInMinutes = ageInHours * 60;
+
+  alert("Wow! You are approximately " + ageInMonths + " months old!🗓️");
+  alert("That's about " + ageInDays + " days!");
+  alert("Or roughly " + ageInHours + " hours!");
+  alert("That's " + ageInMinutes + " minutes of being human!");
+}
+
+function draw() {}
+  </script>
+</body>
+</html>

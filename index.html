@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jaden Pinet | ARTG 2262</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Courier New', monospace;
+      background: #0d0d0d;
+      color: #f0f0f0;
+      min-height: 100vh;
+      padding: 60px 40px;
+    }
+
+    header {
+      max-width: 800px;
+      margin: 0 auto 60px auto;
+      border-bottom: 1px solid #333;
+      padding-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #888;
+      font-size: 0.95rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s;
+      display: block;
+    }
+
+    .card:hover {
+      border-color: #87cff0;
+      transform: translateY(-3px);
+    }
+
+    .thumbnail {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .card-body {
+      padding: 16px;
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      color: #87cff0;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 6px;
+    }
+
+    footer {
+      max-width: 800px;
+      margin: 60px auto 0 auto;
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      font-size: 0.8rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Jaden Pinet</h1>
+    <p>ARTG-2262+63: Prototyping with Code &nbsp;·&nbsp; Northeastern University</p>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <a class="card" href="https://studio.code.org/c/1519045606" target="_blank" rel="noopener">
+        <div class="thumbnail">🎮</div>
+        <div class="card-body">
+          <div class="card-label">Assignment 1</div>
+          <div class="card-title">Code.org Project</div>
+          <div class="card-desc">External link ↗</div>
+        </div>
+      </a>
+
+      <a class="card" href="assignment2/index.html">
+        <div class="thumbnail">🔢</div>
+        <div class="card-body">
+          <div class="card-label">Assignment 2</div>
+          <div class="card-title">Math Explorer</div>
+          <div class="card-desc">Interactive number operations</div>
+        </div>
+      </a>
+
+      <a class="card" href="assignment3/index.html">
+        <div class="thumbnail">🐸</div>
+        <div class="card-body">
+          <div class="card-label">Assignment 3</div>
+          <div class="card-title">Self Portrait</div>
+          <div class="card-desc">Frog portrait with Puerto Rico flag</div>
+        </div>
+      </a>
+
+      <a class="card" href="assignment4/index.html">
+        <div class="thumbnail">☁️</div>
+        <div class="card-body">
+          <div class="card-label">Assignment 4</div>
+          <div class="card-title">Sunny Clouds</div>
+          <div class="card-desc">Repeating pattern of sunny clouds</div>
+        </div>
+      </a>
+
+      <a class="card" href="assignment5/index.html">
+        <div class="thumbnail">🌤️</div>
+        <div class="card-body">
+          <div class="card-label">Assignment 5</div>
+          <div class="card-title">A Day in the Sky</div>
+          <div class="card-desc">Live sky screensaver with real-time clock</div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>pinet.j@northeastern.edu</p>
+  </footer>
+
+</body>
+</html>

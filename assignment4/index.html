@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 4 | Sunny Clouds</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+</head>
+<body style="margin:0">
+  <script>
+// Jaden Pinet
+// ARTG 2262 | Prototyping With Code
+// TITLE: Sunny Clouds
+
+function setup() {
+  createCanvas(1024, 1024);
+  noLoop();
+}
+
+function draw() {
+  background(135, 207, 240);
+  textSize(30);
+
+  function drawSunnyCloud(x, y) {
+    noStroke();
+
+    fill(255, 255, 0);
+    circle(x, y - 13, 20);
+
+    fill(255);
+    circle(x, y, 25);
+    circle(x + 25, y, 25);
+    circle(x + 13, y - 13, 25);
+    rect(x, y + 2.5, 30, 10, 10);
+  }
+
+  function repeatPattern() {
+    for (let x = 50; x < width - 20; x += 100) {
+      for (let y = 50; y < height - 20; y += 100) {
+        drawSunnyCloud(x, y);
+      }
+    }
+  }
+  repeatPattern();
+}
+
+function keyPressed() {
+  if (key == 'S' || key == 's') {
+    saveCanvas("assignment[4]_pattern_Pinet_Jaden");
+  }
+}
+  </script>
+</body>
+</html>

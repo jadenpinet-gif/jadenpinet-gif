@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 3 | Self Portrait</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+</head>
+<body style="margin:0">
+  <script>
+// Jaden Pinet
+// Assignment [3] Self Portraits
+// 2262 | Prototyping With Code
+// LAB 2 - Boolean
+
+function setup() {
+  createCanvas(600, 600);
+  noLoop();
+}
+
+function draw() {
+  background(137, 207, 234);
+
+  fill(255, 235, 100);
+  noStroke();
+  ellipse(width / 2, height / 2, 370, 450);
+
+  stroke(100, 150, 100);
+  strokeWeight(6);
+  ellipse(width / 2, height / 2, 350, 430);
+
+  fill(80, 200, 230);
+  noStroke();
+  rect(width / 2 - 68, height / 2 - 5, 135, 105, 8);
+
+  fill(0, 0, 0);
+  triangle(width / 2 - 30, height / 2 - 20, width / 2 + 30, height / 2 - 20, width / 2, height / 2 + 25);
+
+  fill(220, 170, 100);
+  noStroke();
+  ellipse(width / 2, height / 2 - 50, 135, 105);
+
+  ellipse(width / 2 - 30, height / 2 - 88, 38, 45);
+  ellipse(width / 2 + 30, height / 2 - 88, 38, 45);
+
+  fill(0, 0, 40);
+  ellipse(width / 2 - 30, height / 2 - 91, 30, 23);
+  ellipse(width / 2 + 30, height / 2 - 91, 30, 23);
+
+  fill(255);
+  ellipse(width / 2 - 34, height / 2 - 97, 19, 11);
+  ellipse(width / 2 + 30, height / 2 - 97, 19, 11);
+
+  stroke(200, 120, 80);
+  strokeWeight(2);
+  noFill();
+  beginShape();
+  curveVertex(width / 2 - 68, height / 2 - 43);
+  curveVertex(width / 2 - 65, height / 2 - 43);
+  curveVertex(width / 2 - 34, height / 2 - 31);
+  curveVertex(width / 2, height / 2 - 41);
+  curveVertex(width / 2 + 34, height / 2 - 31);
+  curveVertex(width / 2 + 65, height / 2 - 43);
+  curveVertex(width / 2 + 65, height / 2 - 43);
+  endShape();
+
+  fill(255);
+  noStroke();
+  ellipse(width / 2, height / 2 + 33, 9, 9);
+  ellipse(width / 2, height / 2 + 51, 9, 9);
+  ellipse(width / 2, height / 2 + 70, 9, 9);
+
+  fill(255, 0, 0);
+  rect(width / 2 + 15, height / 2 + 20, 110, 15, 1);
+  fill(255);
+  rect(width / 2 + 15, height / 2 + 35, 110, 15, 1);
+  fill(255, 0, 0);
+  rect(width / 2 + 15, height / 2 + 50, 110, 15, 1);
+  fill(255);
+  rect(width / 2 + 15, height / 2 + 65, 110, 15, 1);
+  fill(255, 0, 0);
+  rect(width / 2 + 15, height / 2 + 80, 110, 15, 1);
+
+  fill(80, 200, 230);
+  noStroke();
+  triangle(width / 2 + 15, height / 2 + 20, width / 2 + 15, height / 2 + 95, width / 2 + 70, height / 2 + 58);
+
+  stroke(255);
+  strokeWeight(5);
+  line(width / 2 + 15, height / 2 + 20, width / 2 + 15, height / 2 + 135);
+
+  fill(255);
+  noStroke();
+  let starX = width / 2 + 33;
+  let starY = height / 2 + 58;
+  beginShape();
+  vertex(starX, starY - 12);
+  vertex(starX + 4, starY - 4);
+  vertex(starX + 12, starY - 4);
+  vertex(starX + 6, starY + 2);
+  vertex(starX + 8, starY + 10);
+  vertex(starX, starY + 5);
+  vertex(starX - 8, starY + 10);
+  vertex(starX - 6, starY + 2);
+  vertex(starX - 12, starY - 4);
+  vertex(starX - 4, starY - 4);
+  endShape(CLOSE);
+
+  fill(255, 235, 100);
+  textStyle(BOLD);
+  text("JADEN PINET", 25, 550);
+
+  function curvedText(message, centerX, centerY, radius) {
+    textAlign(CENTER, CENTER);
+    textSize(40);
+    textStyle(BOLD);
+    fill(100, 150, 100);
+    let angleSpread = 0.19;
+    let totalAngle = message.length * angleSpread;
+    push();
+    translate(centerX, centerY);
+    for (let i = 0; i < message.length; i++) {
+      let angle = -totalAngle / 2 + i * angleSpread;
+      push();
+      rotate(angle);
+      translate(0, -radius);
+      text(message[i], 0, 0);
+      pop();
+    }
+    pop();
+  }
+
+  function curvedTextBottom(message, centerX, centerY, radius) {
+    textAlign(CENTER, CENTER);
+    textSize(40);
+    textStyle(BOLD);
+    fill(100, 150, 100);
+    let angleSpread = 0.20;
+    let totalAngle = message.length * angleSpread;
+    push();
+    translate(centerX, centerY);
+    for (let i = 0; i < message.length; i++) {
+      let angle = PI + totalAngle / 2 - i * angleSpread;
+      push();
+      rotate(angle - 0.05);
+      translate(0, -radius);
+      rotate(PI);
+      text(message[i], 0, 0);
+      pop();
+    }
+    pop();
+  }
+
+  curvedText("PUERTO RICO", width / 2, height / 2 - 15, 145);
+  curvedTextBottom("SEGUIMO AQUI", width / 2, height / 2 + 25, 150);
+}
+  </script>
+</body>
+</html>
