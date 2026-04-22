@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment 6 | Drawing App</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+</head>
+<body style="margin:0">
+  <script>
+// ARTG-2262 assignment 6 - DJ Booth Drawer
+// drawing app
+// Jaden Pinet
+// pinet.j@northeastern.edu
+
+let panelWidth = 80;
+let topBar = 28;
+
+let colorX, colorY, colorW, colorH;
+let sliderX, sliderY, sliderW, sliderH;
+let eraserX, eraserY, eraserW, eraserH;
+let clearX, clearY, clearW, clearH;
+let saveX, saveY, saveW, saveH;
+
+let penColor;
+let brushSize = 6;
+let eraserMode = false;
+let isDragging = false;
+
+function setup() {
+  createCanvas(700, 600);
+  background(255);
+  colorMode(HSB, 360, 100, 100, 100);
+  penColor = color(0, 90, 85);
+
+  let margin = 10;
+  let buttonWidth = panelWidth - margin * 2;
+
+  colorX = margin;
+  colorY = 10 + topBar;
+  colorW = buttonWidth;
+  colorH = 200;
+
+  sliderW = buttonWidth;
+  sliderH = 100;
+  sliderX = margin;
+  sliderY = colorY + colorH + 30;
+
+  eraserX = margin;
+  eraserY = sliderY + sliderH + 20;
+  eraserW = buttonWidth;
+  eraserH = 32;
+
+  clearX = margin;
+  clearY = eraserY + eraserH + 10;
+  clearW = buttonWidth;
+  clearH = 32;
+
+  saveX = margin;
+  saveY = clearY + clearH + 12;
+  saveW = buttonWidth;
+  saveH = 30;
+}
+
+function draw() {
+  if (mouseIsPressed && mouseButton === LEFT && mouseX > panelWidth && mouseY > topBar) {
+    strokeCap(ROUND);
+    if (eraserMode) {
+      stroke(0, 0, 100);
+      strokeWeight(brushSize * 3);
+    } else {
+      stroke(penColor);
+      strokeWeight(brushSize);
+    }
+    line(pmouseX, pmouseY, mouseX, mouseY);
+  }
+
+  noStroke();
+  fill(0, 0, 15);
+  rect(0, 0, panelWidth, height);
+
+  noStroke();
+  fill(0, 0, 20);
+  rect(0, 0, width, topBar);
+  fill(0, 0, 55);
+  textSize(10);
+  textAlign(LEFT, CENTER);
+  text("Draw: left drag   |   Color: click strip   |   Size: drag bar   |   Eraser / Clear / Save: panel   |   S: save", panelWidth + 10, topBar / 2);
+
+  strokeWeight(1);
+  for (let y = colorY; y < colorY + colorH; y++) {
+    let h = map(y, colorY, colorY + colorH, 0, 360);
+    stroke(h, 90, 90);
+    line(colorX, y, colorX + colorW, y);
+  }
+
+  noFill();
+  stroke(0, 0, 100, 20);
+  strokeWeight(1);
+  rect(colorX, colorY, colorW, colorH, 6);
+
+  let indicatorY = map(hue(penColor), 0, 360, colorY, colorY + colorH);
+  fill(0, 0, 100);
+  stroke(0, 0, 0);
+  strokeWeight(1.5);
+  circle(colorX + colorW / 2, indicatorY, 10);
+
+  noStroke();
+  fill(0, 0, 55);
+  textSize(9);
+  textAlign(CENTER, CENTER);
+  text("COLOR", panelWidth / 2, colorY + colorH + 10);
+
+  noStroke();
+  fill(0, 0, 55);
+  textSize(9);
+  textAlign(CENTER, CENTER);
+  text("SIZE", sliderX + sliderW / 2, sliderY - 10);
+
+  fill(0, 0, 22);
+  rect(sliderX, sliderY, sliderW, sliderH, 6);
+
+  let fillH = map(brushSize, 1, 40, 0, sliderH);
+  fill(isDragging ? color(0, 0, 60) : color(0, 0, 45));
+  rect(sliderX, sliderY + (sliderH - fillH), sliderW, fillH, 6);
+
+  stroke(0, 0, 85);
+  strokeWeight(2);
+  let lineY = sliderY + (sliderH - fillH);
+  line(sliderX + 4, lineY, sliderX + sliderW - 4, lineY);
+
+  noStroke();
+  fill(0, 0, 80);
+  textSize(11);
+  text(brushSize, sliderX + sliderW / 2, sliderY + sliderH / 2);
+
+  noStroke();
+  fill(eraserMode ? color(200, 70, 80) : color(0, 0, 28));
+  rect(eraserX, eraserY, eraserW, eraserH, 6);
+  fill(eraserMode ? color(0, 0, 100) : color(0, 0, 65));
+  textSize(9);
+  textAlign(CENTER, CENTER);
+  text("ERASER", eraserX + eraserW / 2, eraserY + eraserH / 2);
+
+  noStroke();
+  fill(0, 0, 28);
+  rect(clearX, clearY, clearW, clearH, 6);
+  fill(0, 0, 65);
+  textSize(9);
+  textAlign(CENTER, CENTER);
+  text("CLEAR", clearX + clearW / 2, clearY + clearH / 2);
+
+  noStroke();
+  fill(0, 0, 28);
+  rect(saveX, saveY, saveW, saveH, 6);
+  fill(0, 0, 65);
+  textSize(9);
+  textAlign(CENTER, CENTER);
+  text("SAVE", saveX + saveW / 2, saveY + saveH / 2);
+
+  if (eraserMode && mouseX > panelWidth && mouseY > topBar) {
+    noFill();
+    stroke(0, 0, 0);
+    strokeWeight(1);
+    circle(mouseX, mouseY, brushSize * 3);
+  }
+}
+
+function mousePressed() {
+  if (mouseX > colorX && mouseX < colorX + colorW && mouseY > colorY && mouseY < colorY + colorH) {
+    let h = map(mouseY, colorY, colorY + colorH, 0, 360);
+    penColor = color(h, 90, 85);
+    eraserMode = false;
+  }
+
+  if (mouseX > sliderX && mouseX < sliderX + sliderW && mouseY > sliderY && mouseY < sliderY + sliderH) {
+    isDragging = true;
+  }
+
+  if (mouseX > eraserX && mouseX < eraserX + eraserW && mouseY > eraserY && mouseY < eraserY + eraserH) {
+    eraserMode = !eraserMode;
+  }
+
+  if (mouseX > clearX && mouseX < clearX + clearW && mouseY > clearY && mouseY < clearY + clearH) {
+    background(255);
+  }
+
+  if (mouseX > saveX && mouseX < saveX + saveW && mouseY > saveY && mouseY < saveY + saveH) {
+    saveCanvas('my_drawing', 'png');
+  }
+}
+
+function mouseDragged() {
+  if (isDragging) {
+    brushSize = constrain(brushSize - int(movedY * 0.4), 1, 40);
+  }
+}
+
+function mouseReleased() {
+  isDragging = false;
+}
+
+function keyPressed() {
+  if (key === 'S' || key === 's') {
+    saveCanvas('my_drawing', 'png');
+  }
+}
+  </script>
+</body>
+</html>
